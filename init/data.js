@@ -1,0 +1,711 @@
+const { text } = require("express");
+
+const languagesData = [
+    {
+        name: "Python",
+        hero: "Popular",
+        tagline: "Simple, readable, and powerful programming language.",
+        badges:["Beginner Friendly", "AI & ML", "Cross-platform", "Open Source"],
+        des: "Python is a high-level, interpreted programming language known for its simplicity and readability. It is widely used in web development, data science, artificial intelligence, automation, cybersecurity, and scientific computing.",
+        infoPanel: ["Developed By: Guido van Rossum", "First Released: 1991", "Paradigm: Object-Oriented", "Functional, Popularity: Very High "],
+        logoUrl: "https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png",
+        imageUrl: "https://media.istockphoto.com/id/1432375853/vector/3d-python-programming-language-logo.jpg?s=2048x2048&w=is&k=20&c=tlWa_ZWLDelwv6_TNUsNJoCQSKpR4KqbQCW4IEbckCo=",
+        description: "A simple and powerful language popular for AI, data science, and web development.",
+        sections: [
+            {
+                title: "About",
+                icon: "fa-solid fa-book-open",
+                bgColor: "#0000fff6",
+                text: "Learn about the language from its official website, including its history, features, and use cases.",
+                titleLink: "https://www.python.org/about/",
+            },
+            {
+                title: "Installation",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://www.python.org/downloads/",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https: //www.python.org/doc/",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://www.python.org/community/",
+            },
+            {
+                title: "News",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Stay updated with the latest announcements, releases, and official news.",
+                titleLink: "https://www.python.org/blogs/",
+            },
+            {
+                title: "Events",
+                icon: "fa-solid fa-ticket",
+                bgColor: "#ee4dd6",
+                text: "Discover official meetups, conferences, hackathons, and community gatherings.",
+                titleLink: "https://www.python.org/events/",
+            }
+        ]
+    },
+    {
+        name: "Java",
+        hero: "Popular",
+        tagline: "Platform-independent, object-oriented, Programing Language",
+        badges: ["OOP", "Cross Platform", "Secure","Enterprise Ready"],
+        des: "Java is a high-level, class-based, object-oriented programing language that is designed to have as few implementation dependencies as possible. It is widely used for enterprise applications, Androiddevelopment, big data technologies and more.",
+        infoPanel: ["Developed By: Oracle", "First Released: 1995", "Paradigm: Object-oriented", "Popularity: Very High"],
+        logoUrl: "https://logolook.net/wp-content/uploads/2022/11/Java-Logo.png",
+        imageUrl: "https://www.mytaskpanel.com/wp-content/uploads/2023/04/consulting-blog-09.webp",
+        description: "A platform-independent language commonly used for enterprise and Android applications.",
+        sections: [
+            {
+                title: "Learn",
+                bgColor: "#0000fff6",
+                icon: "fa-solid fa-book-open",
+                text: "Learn about the language from its official website, including its history, features, and use cases.",
+                titleLink: "https://dev.java/learn/",
+            },
+            {
+                title: "Installation",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://dev.java/download/",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://dev.java/community/",
+            },
+            {
+                title: "Contribution",
+                icon: "fa-brands fa-github",
+                bgColor: "#f5833d",
+                text: "Learn how to contribute to the language and participate in its open-source development.",
+                titleLink: "https://dev.java/contribute/",
+            },
+            {
+                title: "News",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Stay updated with the latest announcements, releases, and official news.",
+                titleLink: "https://dev.java/news/",
+            },
+            {
+                title: "Future",
+                icon: "fa-brands fa-medapps",
+                bgColor: "#f03636",
+                text: "Discover the language's roadmap, upcoming features, and future plans.",
+                titleLink: "https://dev.java/future/",
+            }
+        ]
+    },
+    {
+        name: "C",
+        hero: "Popular",
+        tagline: "A powerful, general-purpose programming language",
+        badges: ["Procedural", "Portable", "Fast","System Programming"],
+        des: "C is a general-purpose programming language created by Dennis Ritchie in 1972 at Bell Labs. It is widely used for system programming, embedded systems, operating systems, compilers, and applications that require high performance and efficiency. ",
+        infoPanel: ["Developed By: Dennis Ritchie", "First Released: 1972", "Paradigm: Procedural", "Popularity: Very High"],
+        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png",
+        imageUrl: "https://media.istockphoto.com/id/615714450/vector/laptop-with-c-letter-learn-c-programming-language-flat-design.jpg?s=1024x1024&w=is&k=20&c=vIlvnSIZlcy0ObwYDEy_S8JKpU1EtmTn4MET-AFt_Qs=",
+        description: "A Microsoft-developed language used for desktop, web, and game development.",
+        sections: [
+            {
+                title: "About",
+                icon: "fa-solid fa-book-open",
+                bgColor: "#0000fff6",
+                text: "Learn about the language from its official website, including its history, features, and use cases.",
+                titleLink: "https://www.c-language.org/about",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://www.c-language.org/community",
+            },
+            {
+                title: "Resources",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Explore official learning materials, tools, documentation, and helpful resources.",
+                titleLink: "https://www.c-language.org/resources",
+            },
+            {
+                title: "Tools",
+                icon: "fa-solid fa-gears",
+                bgColor: "#ee4dd6",
+                text: "Discover official tools and software to build, test, and debug your applications.",
+                titleLink: "https://www.c-language.org/tools",
+            },
+            {
+                title: "FAQ",
+                icon: "fa-solid fa-question",
+                bgColor: "#bfce38",
+                text: "Find answers to frequently asked questions and common issues.",
+                titleLink: "https://www.c-language.org/faq",
+            }
+        ]
+    },
+    {
+        name: "C++",
+        hero:"Popular",
+        tagline:"High-performance programming for applications and systems.",
+        badges:["OOP", "High Performance", "Cross-platform", "System Programming"],
+        des:"C++ is an extension of C that supports object-oriented programming and generic programming. It is widely used in game development, operating systems, competitive programming, and high-performance software.",
+        infoPanel: ["Developed By: Bjarne Stroustrup","First Released: 1985", "Paradigm: Multi-paradigm", "Popularity: Very High"],
+        logoUrl: "https://isocpp.org/files/img/cpp_logo.png",
+        imageUrl: "https://somcosoftware.com/_image?href=https%3A%2F%2Fsomcosoftware.com%2Fassets%2F50901536-d21e-4466-9c4e-1af66559aab3&w=500&h=500&f=webp",
+        description: "An extension of C that supports object-oriented and high-performance programming.",
+        sections: [
+            {
+                title: "About",
+                icon: "fa-solid fa-book-open",
+                bgColor: "#0000fff6",
+                text: "Learn about the language from its official website, including its history, features, and use cases.",
+                titleLink: "https://isocpp.org/about",
+            },
+            {
+                title: "Installation",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://isocpp.org/get-started",
+            },
+            {
+                title: "Standardization",
+                icon: "fa-solid fa-ticket",
+                bgColor: "#ee4dd6",
+                text: "Learn about the official language standards, specifications, and governing organizations.",
+                titleLink: "https://isocpp.org/std",
+            },
+            {
+                title: "FAQ",
+                icon: "fa-solid fa-question",
+                bgColor: "#bfce38",
+                text: "Find answers to frequently asked questions and common issues.",
+                titleLink: "https://isocpp.org/faq",
+            }
+        ]
+    },
+    {
+        name: "TypeScript",
+        hero: "",
+        tagline: "JavaScript with static typing.",
+        badges: ["Typed", "Web Development", "Microsoft","Scalable"],
+        des: "TypeScript is a strongly typed superset of JavaScript that compiles into JavaScript. It improves code quality, maintainability, and scalability for modern web applications.",
+        infoPanel: ["Developed By: Microsoft", "First Released: 2012", "Paradigm: Object-Oriented", "Popularity: High"],
+        logoUrl: "https://images.icon-icons.com/2415/PNG/512/typescript_original_logo_icon_146317.png",
+        imageUrl: "https://www.mytaskpanel.com/wp-content/uploads/2024/01/03-blog.webp",
+        description: "A strongly typed superset of JavaScript that improves code reliability.",
+        sections: [
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://www.typescriptlang.org/docs/",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://www.typescriptlang.org/community/",
+            },
+            {
+                title: "Tools",
+                icon: "fa-solid fa-gears",
+                bgColor: "#ee4dd6",
+                text: "Discover official tools and software to build, test, and debug your applications.",
+                titleLink: "https://www.typescriptlang.org/tools/",
+            },
+        ]
+    },
+    {
+        name: "Rust",
+        hero: "",
+        tagline: "Safe, fast, and memory-efficient systems programming.",
+        badges: ["Memory Safe", "Fast", "Systems","Open Source"],
+        des: "Rust is designed for performance and safety, especially safe memory management without garbage collection. It is used in operating systems, embedded systems, and backend services.",
+        infoPanel: ["Developed By: Mozilla", "First Released: 2010", "Paradigm: Multi-paradigm", "Popularity: High"],
+        logoUrl: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/rust-programming-language-icon.png",
+        imageUrl: "https://www.mytaskpanel.com/wp-content/uploads/2022/11/blog-consulting23-1.webp",
+        description: "A systems programming language focused on safety, speed, and concurrency.",
+        sections: [
+            {
+                title: "Learn",
+                icon: "fa-solid fa-book-open",
+                bgColor: "#0000fff6",
+                text: "Learn about the language from its official website, including its history, features, and use cases.",
+                titleLink: "https://rust-lang.org/learn/",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://rust-lang.org/community/",
+            },
+            {
+                title: "Installation",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://rust-lang.org/tools/install/",
+            },
+            {
+                title: "Tools",
+                icon: "fa-solid fa-gears",
+                bgColor: "#ee4dd6",
+                text: "Discover official tools and software to build, test, and debug your applications.",
+                titleLink: "https://rust-lang.org/tools/",
+            },
+            {
+                title: "Blogs",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Read articles, updates, and technical insights from the official team.",
+                titleLink: "https://blog.rust-lang.org/",
+            }
+        ]
+    },
+    {
+        name: "JavaScript",
+        hero: "Popular",
+        tagline: "The language of the modern web.",
+        badges: ["Web Development", "Dynamic", "Frontend","Backend"],
+        des: "JavaScript powers interactive websites and web applications. It runs in browsers and on servers using Node.js, making it one of the most versatile programming languages.",
+        infoPanel: ["Developed By: Brendan Eich", "First Released: 1995", "Paradigm: Multi-paradigm", "Popularity: Very High"],
+        logoUrl: "https://www.javascripttutorial.net/wp-content/uploads/2021/04/JavaScript-Tutorial.svg" ,
+        imageUrl: "https://cdn.sanity.io/images/9uwkxuld/production/255cfec31bbbe3b01f9dfffe7a02299fab7cef8f-800x300.png?h=1000&auto=format&fit=crop",
+        description:"A versatile scripting language used to create interactive web applications.",
+        sections: [
+            {
+                title: "JavaScript ",
+                icon: "",
+                bgColor: "",
+                text: "JavaScript does not have a single official website because it is an open-standard language implemented by different browser vendors rather than a centralized company.",
+                titleLink: "",
+            }
+        ]
+    },
+    {
+        name: "Ruby",
+        hero: "",
+        tagline: "Elegant programming focused on simplicity.",
+        badges: ["Dynamic", "Web Development", "Productivity","Open Source"],
+        des: "Ruby is a dynamic programming language designed for developer happiness. It is widely known for powering the Ruby on Rails framework.",
+        infoPanel: ["Developed By: Yukihiro Matsumoto", "First Released: 1995", "Paradigm: Object-Oriented", "Popularity: Medium"],
+        logoUrl: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ruby-programming-language-icon.png",
+        imageUrl: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190902124355/ruby-programming-language.png",
+        description: "A developer-friendly language known for elegant syntax and rapid development.",
+        sections: [
+            {
+                title: "Installation ",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://www.ruby-lang.org/en/documentation/installation/",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://www.ruby-lang.org/en/documentation/",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://www.ruby-lang.org/en/community/",
+            },
+            {
+                title: "Contribution",
+                icon: "fa-brands fa-github",
+                bgColor: "#f5833d",
+                text: "Learn how to contribute to the language and participate in its open-source development.",
+                titleLink: "https://www.ruby-lang.org/en/community/ruby-core/",
+            },
+            {
+                title: "News",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Stay updated with the latest announcements, releases, and official news.",
+                titleLink: "https://www.ruby-lang.org/en/news/",
+            }
+        ]
+    },
+    {
+        name: "Swift",
+        hero: "",
+        tagline: "Modern programming for Apple platforms.",
+        badges: ["Apple", "Fast", "Safe","Mobile Development"],
+        des: "Swift is Apple's programming language for building applications for iOS, macOS, watchOS, and tvOS with safety and high performance.",
+        infoPanel: ["Developed By: Apple", "First Released: 2014", "Paradigm: Multi-paradigm", "Popularity: High"],
+        logoUrl: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/swift-programming-language-icon.png",
+        imageUrl: "https://codeit.us/wp-content/uploads/2018/10/swift-programming-language-2048x1152.webp",
+        description: "Apple's powerful language for creating seamless apps across its ecosystem.",
+        sections: [
+            {
+                title: "Installation ",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://www.swift.org/install/windows/",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://www.swift.org/documentation/",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://www.swift.org/community/",
+            },
+            {
+                title: "Blogs",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Read articles, updates, and technical insights from the official team.",
+                titleLink: "https://www.swift.org/blog/",
+            }
+        ]
+    },
+    {
+        name: "Go",
+        hero: "",
+        tagline: "Simple, efficient, and built for concurrency.",
+        badges: ["Concurrency", "Backend", "Cloud","Open Source"],
+        des: "Go, also called Golang, is designed for scalable software and cloud computing. It offers simplicity, fast compilation, and efficient concurrency.",
+        infoPanel: ["Developed By: Google", "First Released: 2009", "Paradigm: Procedural", "Popularity: High"],
+        logoUrl: "https://images.seeklogo.com/logo-png/46/1/go-programming-language-logo-png_seeklogo-464116.png",
+        imageUrl: "https://miro.medium.com/v2/resize:fit:2560/format:webp/0*e0bEdKWT0CwfDr0c.jpg",
+        description: "Built by Google to create fast, reliable, and scalable software systems.",
+        sections: [
+            {
+                title: "Learn",
+                icon: "fa-solid fa-book-open",
+                bgColor: "#0000fff6",
+                text: "Learn about the language from its official website, including its history, features, and use cases.",
+                titleLink: "https://go.dev/learn/",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://go.dev/ref/spec",
+            },
+            {
+                title: "Blogs",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Read articles, updates, and technical insights from the official team.",
+                titleLink: "https://go.dev/blog/",
+            }
+        ]
+    },
+    {
+        name: "Php",
+        hero: "",
+        tagline: "The scripting language for dynamic websites.",
+        badges: ["Backend", "Web", "Open Source","Server-side"],
+        des: "PHP is a server-side scripting language used for creating dynamic web applications and content management systems like WordPress.",
+        infoPanel: ["Developed By: Rasmus Lerdorf", "First Released: 1995", "Paradigm: Imperative", "Popularity: High"],
+        logoUrl: "https://netlicensing.io/img/blog/nlic-programming-languages-php.png",
+        imageUrl: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3NmSPWWnqXgNfymVzutReGwX0XvP_Udgsejfx_6bfUnoP-0iRTZAfoO3t8qO9EdpOfY8EvDkYWtABt3_rfoFhOaRxbyzey6qeuEe67qC-nCzUUwvRFp8oc_P3GYm1mcUVP5dsN5zjJAoG/s1700-e365/php-programming-language.jpg",
+        description: "Apple's powerful language for creating seamless apps across its ecosystem.",
+        sections: [
+            {
+                title: "Installation ",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://www.php.net/downloads.php",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://www.php.net/docs.php",
+            },
+            {
+                title: "Contribution",
+                icon: "fa-brands fa-github",
+                bgColor: "#f5833d",
+                text: "Learn how to contribute to the language and participate in its open-source development.",
+                titleLink: "https://www.php.net/get-involved.php",
+            },
+        ]
+    },
+    {
+        name: "Kotlin",
+        hero: "",
+        tagline: "Modern language for Android and backend.",
+        badges: ["Android", "JVM", "Safe","Concise"],
+        des: "Kotlin is a modern programming language officially supported for Android development and fully interoperable with Java.",
+        infoPanel: ["Developed By: JetBrains", "First Released: 2011", "Paradigm: Object-Oriented", "Popularity: High"],
+        logoUrl: "https://images.seeklogo.com/logo-png/32/1/kotlin-logo-png_seeklogo-323430.png",
+        imageUrl:  "https://www.mindinventory.com/blog/wp-content/uploads/2022/10/kotlin-2.jpg",
+        description: "A modern and concise language that simplifies Android and backend development.",
+        sections: [
+            {
+                title: "Installation ",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://kotlinlang.org/docs/getting-started.html",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://kotlinlang.org/docs/home.html",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://kotlinlang.org/community/",
+            },
+            {
+                title: "API References",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#bfce38",
+                text:"Find quick references for syntax, commands, and language features.",
+                titleLink: "https://kotlinlang.org/docs/api-references.html",
+            },
+            {
+                title: "Case Studies",
+                icon: "fa-solid fa-ticket",
+                bgColor: "#ee4dd6",
+                text: "Explore real-world projects and success stories showcasing the language in action.",
+                titleLink: "https://kotlinlang.org/case-studies/",
+            }
+        ]
+    },
+    {
+        name: "R",
+        hero: "",
+        tagline: "Programming language for statistics and data analysis.",
+        badges: ["Statistics", "Data Science", "Visualization","Open Source"],
+        des: "R is designed for statistical computing, data visualization, and data analysis. It is widely used by researchers, analysts, and data scientists.",
+        infoPanel: ["Developed By: Ross Ihaka & Robert Gentleman", "First Released: 1993", "Paradigm: Functional", "Popularity: High"],
+        logoUrl: "https://images.seeklogo.com/logo-png/64/1/r-programming-language-logo-png_seeklogo-642512.png",
+        imageUrl: "https://www.readree.com/wp-content/uploads/2022/06/r-programming.jpg",
+        description: "Purpose-built for statistics, data visualization, and advanced analytics.",
+        sections: [
+            {
+                title: "Installation ",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://cran.r-project.org/?utm_source=chatgpt.com",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://cran.r-project.org/manuals.html?utm_source=chatgpt.com",
+            },
+            {
+                title: "Contribution",
+                icon: "fa-brands fa-github",
+                bgColor: "#f5833d",
+                text: "Learn how to contribute to the language and participate in its open-source development.",
+                titleLink: "https://cran.r-project.org/web/packages/?utm_source=chatgpt.com",
+            }
+        ]
+    },
+    {
+        name: "Lua",
+        hero: "",
+        tagline: "Lightweight scripting for embedded applications.",
+        badges: ["Lightweight", "Embedded", "Fast","Game Development"],
+        des: "Lua is a lightweight scripting language commonly embedded in applications, games, and IoT devices due to its simplicity and speed.",
+        infoPanel: ["Developed By: PUC-Rio", "First Released: 1993", "Paradigm: Procedural", "Popularity: Medium"],
+        logoUrl: "https://mlfk3cv5yvnx.i.optimole.com/cb:HA53.300ea/w:1024/h:535/q:mauto/f:best/https://www.ninjaone.com/wp-content/uploads/2024/07/N1-0921-Lua-Programming-Language-blog-image-1.png",
+        imageUrl: "https://www.logo.wine/a/logo/Lua_(programming_language)/Lua_(programming_language)-Logo.wine.svg:",
+        description: "A lightweight and embeddable language widely used in gaming and scripting.",
+        sections: [ 
+            {
+                title: "About ",
+                icon: "fa-solid fa-book-open",
+                bgColor: "#0000fff6",
+                text: "Learn about the language from its official website, including its history, features, and use cases.",
+                titleLink: "https://www.lua.org/about.html",
+            },
+            {
+                title: "Installation ",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://www.lua.org/download.html",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://www.lua.org/docs.html",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://www.lua.org/community.html",
+            },
+            {
+                title: "News",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Stay updated with the latest announcements, releases, and official news.",
+                titleLink: "https://www.lua.org/news.html",
+            }
+        ]
+    },
+    {
+        name: "Scala",
+        hero: "",
+        tagline: "Combining object-oriented and functional programming.",
+        badges: ["JVM", "Functional", "Scalable","Big Data"],
+        des: "Scala combines functional and object-oriented programming while running on the Java Virtual Machine. It is widely used with Apache Spark for big data.",
+        infoPanel: ["Developed By: Martin Odersky", "First Released: 2004", "Paradigm: Functional & Object-Oriented", "Popularity: Medium"],
+        logoUrl: "https://icon.icepanel.io/Technology/svg/Scala.svg",
+        imageUrl: "https://andalinux.wordpress.com/wp-content/uploads/2018/09/saat5d41.png?w=700",
+        description: "Blending functional and object-oriented programming on the Java platform.",
+        sections: [
+            {
+                title: "About ",
+                icon: "fa-solid fa-book-open",
+                bgColor: "#0000fff6",
+                text: "Learn about the language from its official website, including its history, features, and use cases.",
+                titleLink: "https://www.scala-lang.org/?utm_source=chatgpt.com",
+            },
+            {
+                title: "Installation ",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://www.scala-lang.org/download/",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://docs.scala-lang.org/",
+            },
+            {
+                title: "Community",
+                icon: "fa-solid fa-user",
+                bgColor: "#922ed1",
+                text: "Connect with the official community forums, discussions, and support channels.",
+                titleLink: "https://www.scala-lang.org/community/",
+            },
+            {
+                title: "Blogs",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Read articles, updates, and technical insights from the official team.",
+                titleLink: "https://www.scala-lang.org/blog/",
+            }
+        ]
+    },
+    {
+        name: "Elixir",
+        hero: "",
+        tagline: "Scalable and fault-tolerant applications.",
+        badges: ["Functional", "Concurrent", "Distributed","Backend"],
+        des: "Elixir is a functional programming language built on the Erlang VM, designed for highly available and scalable applications.",
+        infoPanel: ["Developed By: José Valim", "First Released: 2011", "Paradigm: Functional", "Popularity: Growing"],
+        logoUrl: "https://icon.icepanel.io/Technology/svg/Elixir.svg",
+        imageUrl: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fu2bioxgjb4ye4mnncdan.png",
+        description: "Built for highly available and scalable applications running in real time.",
+        sections: [
+            {
+                title: "About ",
+                icon: "fa-solid fa-book-open",
+                bgColor: "#0000fff6",
+                text: "Learn about the language from its official website, including its history, features, and use cases.",
+                titleLink: "https://elixir-lang.org/",
+            },
+            {
+                title: "Installation ",
+                icon: "fa-solid fa-download",
+                bgColor: "#17b717",
+                text: "Download the official installer and follow the setup instructions for your platform.",
+                titleLink: "https://elixir-lang.org/install.html",
+            },
+            {
+                title: "Documentation",
+                icon: "fa-solid fa-receipt",
+                bgColor: "#f03636",
+                text: "Access the official documentation, API references, and language specifications.",
+                titleLink: "https://elixir-lang.org/docs.html",
+            },
+            {
+                title: "Cases",
+                icon: "fa-solid fa-ticket",
+                bgColor: "#ee4dd6",
+                text: "Explore real-world projects and success stories showcasing the language in action.",
+                titleLink: "https://elixir-lang.org/cases.html",
+            },
+            {
+                title: "Blogs",
+                icon: "fa-solid fa-newspaper",
+                bgColor: "#30c6dd",
+                text: "Read articles, updates, and technical insights from the official team.",
+                titleLink: "https://elixir-lang.org/blog/",
+            }
+        ]
+    },
+    {
+        name: "Shell",
+        icon: "",
+        tagline: "Automate tasks through command-line scripting.",
+        badges: ["Automation", "Linux", "Scripting","DevOps"],
+        des: "Shell scripting enables automation of repetitive tasks, system administration, and workflow management in Unix and Linux operating systems.",
+        infoPanel: ["Developed By: Stephen Bourne (Bourne Shell)", "First Released: 1979", "Paradigm: Scripting", "Popularity: Very High"],
+        logoUrl: "https://d33wubrfki0l68.cloudfront.net/306f655dcc33cc3d958cab80d78d3f2da427974c/a2bd8/img/logo/svg/full_colored_dark.svg",
+        imageUrl: "https://media.licdn.com/dms/image/v2/D5612AQFTVcGAFFSeag/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1698170781307?e=2147483647&v=beta&t=H-LDPOEXXlIdRyLCaL262hZjkl_vwYwczc59LEXrSww",
+        description: "A scripting language used to automate tasks and manage operating systems.",
+        sections: [
+            {
+                title: "Shell ",
+                icon: "",
+                bgColor: "",
+                text: "For Shell (Bash/Shell Scripting), there is no single official website for the entire Shell language because there are different shells (Bash, Zsh, Fish, etc.).",
+                titleLink: "",
+            },
+        ]
+    },
+];
+
+module.exports = { data: languagesData };
+    

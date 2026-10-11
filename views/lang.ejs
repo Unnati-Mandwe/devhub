@@ -1,0 +1,29 @@
+<%- include("includes/head.ejs") %>
+<body>
+    <div id="forall">
+    <h2>Programming Languages</h2>
+    <button> Explore </button>
+    <hr>
+    </div>
+
+    <% for (let content of data.contents){%>
+        <img src=<%= content.image %> >
+        <p>
+            <%= data.language %>
+            <%= data.website %>
+            <br>
+            <br>
+            <ul>
+                <li><a href="<%= content.about %>" > About </a></li>
+                <li><a href="<%= content.downloads %>" > Downloads </a></li>
+                <li><a href="<%= content.documentation %>" > Documentation </a></li>
+                <li><a href="<%= content.community%>" > Community </a></li>
+                <li><a href="<%= content.news %>" > News </a></li>
+                <li><a href="<%= content.events %>" > Events </a></li>
+            </ul>
+        </p>
+    <% } %>
+
+    <%- include("includes/footer.ejs") %>
+</body>
+

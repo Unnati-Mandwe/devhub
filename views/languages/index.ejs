@@ -1,0 +1,60 @@
+
+<% layout("layouts/boilerplate") %>
+
+<div class="center-heading">
+    <div class="one" row-cols-sm-1>
+    <p class="main_color">
+        <i class="fa-solid fa-paper-plane"></i> The Ultimate Programming Reference Hub</p>
+    </div>
+<h1 id="main_heading"> One Hub for every Programming <p class="main_color">Languages </p></h1>
+<p class="two">Access official documentation, setup, instructions, package ecosystems,<br> and community resources for your required Programming languages. </p>
+</div>
+
+
+<div class="box-container ">
+    <div class="box-row">
+
+        <div class="box-card">
+            <div class="box-content">
+                <h5 class="box-title">15+</h5>
+                <p class="box-text">Languages</p>
+            </div>
+        </div>
+    
+        <div class="box-card">
+            <div class="box-content">
+                <h5 class="box-title">4</h5>
+                <p class="box-text">Categories</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="section-header">
+    <h2><i class="fa-solid fa-fire" style="color: rgb(236, 131, 64);"></i> Popular Languages </h2>
+
+<a href="/languages/viewall">View all <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+
+<div class="cards-container row g-4">
+<% for(let language of featuredLanguages){%>
+    
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="language-card h-100">
+        <div class="card-top">
+        <img src="<%= language.logoUrl  %>" class="language-logo img-fluid rounded-start" alt="language_logoUrl" >
+            </div>
+
+    <div class="card-body">
+        <h5 class="card-title"><%= language.name %></h5>
+        <p class="card-text-des"><%= language.description %></p>
+        <p class="card-text"><small class="text-body-secondary"><a href="/languages/<%= language._id %>">View Details</a></small>
+        </p>
+    </div>
+</div>
+</div>
+    <% } %>
+</div>

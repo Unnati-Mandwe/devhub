@@ -1,0 +1,56 @@
+<% layout("layouts/boilerplate") %>
+<% if (typeof searchNotFound !== "undefined" && searchNotFound) { %>
+<script>alert("Language not available");</script>
+<% } %>
+<div class="center-heading">
+    <h1>All Programming <span class="main_color">Languages</span></h1>
+    <br>
+    <h5>Browse, filter, and dive into any language's docs, guides, and community.</h5>
+</div>
+
+<div class="box-container">
+    <div class="box-row">
+        <div class="box-card">
+            <div class="box-content">
+                <p class="filter">All Languages (<%= allLanguages.length %>)</p>
+            </div>
+        </div>
+        <div class="box-card">
+            <div class="box-content">
+                <p class="filter">Popular (<%= allLanguages.filter(language => language.hero === "Popular").length %>)</p>
+            </div>
+        </div>
+        <div class="box-card">
+            <div class="box-content">
+                <p class="filter">Open Source (<%= allLanguages.filter(language => language.badges?.some(badge => badge.toLowerCase() === "open source")).length %>)</p>
+            </div>
+        </div>
+        <div class="box-card">
+            <div class="box-content">
+                <p class="filter">Web Development (<%= allLanguages.filter(language => language.badges?.some(badge => badge.toLowerCase().includes("web development"))).length %>)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="cards-container row g-4">
+<% for(let language of allLanguages){%>
+    
+<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+    <div class="language-card h-100">
+        <div class="card-top">
+        <img src="<%= language.logoUrl  %>" class="language-logo img-fluid rounded-start" alt="language_logoUrl" >
+            </div>
+
+    <div class="card-body">
+        <h5 class="card-title"><%= language.name %></h5>
+        <p class="card-text-des"><%= language.description %></p>
+        <p class="card-text"><small class="text-body-secondary"><a href="/languages/<%= language._id %>">View Details</a></small>
+        </p>
+    </div>
+</div>
+</div>
+    <% } %>
+</div>

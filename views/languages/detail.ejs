@@ -1,0 +1,142 @@
+<% layout("layouts/boilerplate") %>
+
+
+    <main class="main-container">
+        <!-- Hero Section with Light Blue Curved Container -->
+        <section class="hero-card">
+            <div class="hero-content">
+                <!-- Left: Language Logo Box -->
+                <div class="logo-container">
+                    <img src="<%= language.logoUrl %>" alt="<%= language.name %> Logo" class="lang-logo">
+                </div>
+
+                <!-- Middle: Language Info & Badge -->
+                <div class="lang-details">
+                    <div class="title-row">
+                        <h1><%= language.name %></h1>
+                        <% if (language.hero) { %>
+                            <span class="hero-badge">
+                                <i class="fa-solid fa-star"></i> <%= language.hero %>
+                            </span>
+                        <% } %>
+                    </div>
+                    
+                    <p class="tagline"><%= language.tagline %></p>
+                    
+                    <!-- Badges -->
+                    <div class="badges-container">
+                        <% language.badges.forEach((badge, idx) => { %>
+                            <!-- Cycling a subtle background color class for badges -->
+                            <span class="badge badge-color-<%= idx % 4 %>"><%= badge %></span>
+                        <% }) %>
+                    </div>
+
+                    <p class="main-description"><%= language.des %></p>
+                </div>
+
+                <!-- Right: Information Panel Card -->
+                <aside class="info-sidebar">
+                    <div class="info-item">
+                        <div class="info-icon blue-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div class="info-text">
+                            <span class="info-label">Developed By</span>
+                            <span class="info-value"><%= language.infoPanel[0].split(': ')[1] %></span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon blue-icon">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+                        <div class="info-text">
+                            <span class="info-label">First Released</span>
+                            <span class="info-value"><%= language.infoPanel[1].split(': ')[1] %></span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon blue-icon">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div class="info-text">
+                            <span class="info-label">Paradigm</span>
+                            <span class="info-value"><%= language.infoPanel[2].split(': ')[1] %></span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon blue-icon">
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="info-text">
+                            <span class="info-label">Popularity</span>
+                            <span class="info-value"><%= language.infoPanel[3].split(': ')[1] %></span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Section Title: Explore Resources -->
+        <h2 class="section-heading">
+            <span class="fire-icon">🔥</span> Explore <%= language.name %> Resources
+        </h2>
+        <p class="section-subheading">Everything you need to learn, install, and stay updated with <%= language.name %></p>
+
+        <!-- Dynamic Resource Grid -->
+        <section class="resources-grid">
+            <% language.sections.forEach(section => { %>
+                <% const resourceColor = section.bgColor || '#3b82f6'; %>
+                <div class="resource-card" style="--accent-color: <%= resourceColor %>">
+                    <% if (section.icon) { %>
+                        <div class="card-left">
+                            <!-- Dynamic Icon with background color injected from schema data -->
+                            <div class="resource-icon" style="background-color: <%= resourceColor %>">
+                                <i class="<%= section.icon %>"></i>
+                            </div>
+                        </div>
+                    <% } %>
+                    <div class="card-right">
+                        <h3><%= section.title %></h3>
+                        <p><%= section.text %></p>
+                        <% if (section.titleLink && section.titleLink.trim()) { %>
+                            <a href="<%= section.titleLink %>" target="_blank" rel="noopener noreferrer" class="resource-btn" style="background-color: <%= resourceColor %>">
+                                <%= section.title %> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </section>
+
+        <!-- Bottom Return Button -->
+        <div class="bottom-action">
+            <a href="/languages/viewall" class="back-btn-bottom">
+                <i class="fa-solid fa-arrow-left"></i> Back to Languages
+            </a>
+        </div>
+    </main>
+
+    
+
+
+
+
+<!-- about /learn = <i class="fa-solid fa-book-open" style="color: rgb(255, 255, 255);"></i>
+
+installation /downloads = <i class="fa-solid fa-download" style="color: rgb(255, 255, 255);"></i>
+
+community= <i class="fa-solid fa-user" style="color: rgb(255, 255, 255);"></i>
+
+contribution = <i class="fa-brands fa-github" style="color: rgb(255, 255, 255);"></i>
+
+news/resources/blogs = <i class="fa-solid fa-newspaper" style="color: rgb(255, 255, 255);"></i>
+
+docs = <i class="fa-solid fa-receipt" style="color: rgb(255, 255, 255);"></i>
+
+events/case studies/cases/standardization = <i class="fa-solid fa-ticket" style="color: rgb(255, 255, 255);"></i>
+
+future = <i class="fa-brands fa-medapps" style="color: rgb(255, 255, 255);"></i>
+
+tools = <i class="fa-solid fa-gears" style="color: rgb(255, 255, 255);"></i>
+
+faq = <i class="fa-solid fa-question" style="color: rgb(255, 255, 255);"></i> -->
