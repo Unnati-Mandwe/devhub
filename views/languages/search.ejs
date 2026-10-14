@@ -1,0 +1,28 @@
+<% layout("layouts/boilerplate") %>
+<div class="center-heading">
+    <h1>Search <span class="main_color">Languages</span></h1>
+    <h5>Results for &quot;<%= query %>&quot; (<%= allLanguages.length %>)</h5>
+</div>
+
+<% if (allLanguages.length === 0) { %>
+    <div class="alert alert-info" role="status">
+        No language matched &quot;<%= query %>&quot;. Try another name.
+    </div>
+<% } else { %>
+    <div class="cards-container row g-4">
+        <% for (const language of allLanguages) { %>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="language-card h-100">
+                    <div class="card-top">
+                        <img src="<%= language.logoUrl || '' %>" class="language-logo img-fluid rounded-start" alt="<%= language.name %> logo">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= language.name %></h5>
+                        <p class="card-text-des"><%= language.description || '' %></p>
+                        <p class="card-text"><small class="text-body-secondary"><a href="/languages/<%= language._id %>">View Details</a></small></p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+<% } %>

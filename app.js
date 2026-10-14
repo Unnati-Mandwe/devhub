@@ -39,18 +39,22 @@ app.get ("/languages/viewall", async(req,res) => {
 });
 
 // Search language names, ignoring letter case.
-app.get("/languages/search", async (req, res) => {
-    const query = String(req.query.q || "").trim();
-    if (!query) {
-        return res.redirect("/languages/viewall");
+app.get("/languages/search", async (req, res, next) => {
+    try {
+        const query = typeof req.query.q === "string" ? req.query.q.trim() : "";
+        if (!query) {
+            return res.redirect("/languages/viewall");
+        }
+
+        const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const allLanguages = await Language.find({
+            name: { $regex: escapedQuery, $options: "i" }
+        }).sort({ name: 1 });
+
+        return res.render("languages/search.ejs", { allLanguages, query });
+    } catch (err) {
+        return next(err);
     }
-
-    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const allLanguages = await Language.find({
-        name: { $regex: escapedQuery, $options: "i" }
-    }).sort({ name: 1 });
-
-    res.render("languages/search.ejs", { allLanguages, query });
 });
 
 //Show Route 
@@ -72,7 +76,7 @@ app.all("/*splat", (req, res, next) => {
 });
 
 app.use((err, req, res, next)=>{
-
+    console.error(err);
     const { statusCode = 500, message = "Something went wrong!" } = err;
     res.status (statusCode).render("error.ejs", { message });
 });

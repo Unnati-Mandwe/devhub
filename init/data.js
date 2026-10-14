@@ -1,5 +1,3 @@
-const { text } = require("express");
-
 const languagesData = [
     {
         name: "Python",

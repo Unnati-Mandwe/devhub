@@ -25,7 +25,7 @@
                     
                     <!-- Badges -->
                     <div class="badges-container">
-                        <% language.badges.forEach((badge, idx) => { %>
+                        <% (language.badges || []).forEach((badge, idx) => { %>
                             <!-- Cycling a subtle background color class for badges -->
                             <span class="badge badge-color-<%= idx % 4 %>"><%= badge %></span>
                         <% }) %>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="info-text">
                             <span class="info-label">Developed By</span>
-                            <span class="info-value"><%= language.infoPanel[0].split(': ')[1] %></span>
+                            <span class="info-value"><%= (language.infoPanel?.[0] || '').split(': ').slice(1).join(': ') || 'Not specified' %></span>
                         </div>
                     </div>
                     <div class="info-item">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="info-text">
                             <span class="info-label">First Released</span>
-                            <span class="info-value"><%= language.infoPanel[1].split(': ')[1] %></span>
+                            <span class="info-value"><%= (language.infoPanel?.[1] || '').split(': ').slice(1).join(': ') || 'Not specified' %></span>
                         </div>
                     </div>
                     <div class="info-item">
@@ -60,7 +60,7 @@
                         </div>
                         <div class="info-text">
                             <span class="info-label">Paradigm</span>
-                            <span class="info-value"><%= language.infoPanel[2].split(': ')[1] %></span>
+                            <span class="info-value"><%= (language.infoPanel?.[2] || '').split(': ').slice(1).join(': ') || 'Not specified' %></span>
                         </div>
                     </div>
                     <div class="info-item">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="info-text">
                             <span class="info-label">Popularity</span>
-                            <span class="info-value"><%= language.infoPanel[3].split(': ')[1] %></span>
+                            <span class="info-value"><%= (language.infoPanel?.[3] || '').split(': ').slice(1).join(': ') || 'Not specified' %></span>
                         </div>
                     </div>
                 </aside>
@@ -84,7 +84,7 @@
 
         <!-- Dynamic Resource Grid -->
         <section class="resources-grid">
-            <% language.sections.forEach(section => { %>
+            <% (language.sections || []).forEach(section => { %>
                 <% const resourceColor = section.bgColor || '#3b82f6'; %>
                 <div class="resource-card" style="--accent-color: <%= resourceColor %>">
                     <% if (section.icon) { %>

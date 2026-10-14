@@ -29,19 +29,30 @@
 //         console.log("Data insertion error:", error);
 //     }
 // };
+if(process.env.NODE_ENV != "production"){
+    require("dotenv").config();
+}
 
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Language = require("../models/language.js");
 
-mongoose.connect("mongodb://127.0.0.1:27017/DevHub")
-    .then(async () => {
-        console.log("Connected to DB");
-        
+async function initializeDatabase() {
+    if (!process.env.ATLASDB_URL) {
+        throw new Error("ATLASDB_URL must be set in the environment");
+    }
+
+    try {
+        await mongoose.connect(process.env.ATLASDB_URL);
         await Language.deleteMany({});
         await Language.insertMany(initData.data);
         console.log("Data initialized successfully!");
-        
-        mongoose.connection.close();
-    })
-    .catch(err => console.log("Error:", err));
+    } finally {
+        await mongoose.disconnect();
+    }
+}
+
+initializeDatabase().catch((err) => {
+    console.error("Database initialization failed:", err);
+    process.exitCode = 1;
+});
