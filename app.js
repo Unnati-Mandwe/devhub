@@ -10,7 +10,7 @@ const Language = require ("./models/language.js");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
-const MongoStore = require('connect-mongo');
+const { MongoStore } = require('connect-mongo');
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/DevHub";
 const dbUrl = process.env.ATLASDB_URL;
@@ -36,7 +36,7 @@ app.engine('ejs', ejsMate);
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     crypto: {
-        secret: "mysupersecretcode"
+        secret: process.env.SECRET
     },
     touchAfter: 24 * 3600,
 });
